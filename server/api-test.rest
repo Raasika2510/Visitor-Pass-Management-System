@@ -6,3 +6,12 @@ Content-Type: application/json
   "username": "ravi_k",
   "password": "securepass123"
 }
+
+### Test Admin Login
+POST http://localhost:5000/api/admin/login
+Content-Type: application/json
+
+{
+  "username": "admin1",
+  "password": "adminpass123"
+}
