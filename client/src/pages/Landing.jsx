@@ -4,13 +4,12 @@ export default function LandingPage() {
   const navigate = useNavigate();
   const location = useLocation();
 
-  // Check if current route is the root ("/")
   const isRootPage = location.pathname === "/";
 
   return (
     <div className="flex flex-col min-h-screen bg-gray-100">
 
-      {/* Header */}
+   
       <header className="bg-violet-800 p-6 rounded-b-2xl shadow-lg text-center sticky top-0 z-50">
         <div className="flex flex-col md:flex-row items-center justify-center gap-6">
           <img
@@ -36,7 +35,7 @@ export default function LandingPage() {
         </h2>
       </header>
 
-      {/* Main */}
+ 
       <main className="flex-grow p-8">
         <section className="max-w-6xl mx-auto">
 
@@ -73,7 +72,6 @@ export default function LandingPage() {
         </section>
       </main>
 
-      {/* Footer */}
       <footer className="bg-violet-800 text-center p-4 rounded-t-2xl shadow-lg">
         <p className="text-amber-50 text-sm font-light">
           Developed by{" "}
