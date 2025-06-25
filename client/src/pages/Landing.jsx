@@ -73,18 +73,18 @@ export default function LandingPage() {
       </main>
 
       <footer className="bg-violet-800 text-center p-4 rounded-t-2xl shadow-lg">
-        <p className="text-amber-50 text-sm font-light">
-          Developed by{" "}
-          <a
-            href="https://github.com/Raasika2510"
-            target="_blank"
-            rel="noopener noreferrer"
-            className="underline hover:text-white transition-colors"
-          >
-            Raasika M
-          </a>
-        </p>
-      </footer>
+  <p className="text-amber-50 text-sm font-light">
+    Developed with <span className="text-red-400">❤️</span> by{" "}
+    <a
+      href="https://github.com/Raasika2510"
+      target="_blank"
+      rel="noopener noreferrer"
+      className="underline hover:text-white transition-colors"
+    >
+      Raasika M
+    </a>
+  </p>
+</footer>
     </div>
   );
 }

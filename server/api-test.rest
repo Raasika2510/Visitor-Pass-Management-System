@@ -1,0 +1,8 @@
+### Test Security Login
+POST http://localhost:5000/api/security/login
+Content-Type: application/json
+
+{
+  "username": "ravi_k",
+  "password": "securepass123"
+}
