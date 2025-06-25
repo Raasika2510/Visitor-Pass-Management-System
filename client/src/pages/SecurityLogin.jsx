@@ -1,8 +1,10 @@
 import React from 'react'
 import { useState } from 'react'
+import { useNavigate } from 'react-router-dom'
 import axios from 'axios'
 
 function SecurityLogin() {
+  const navigate = useNavigate();
   const [username, setUsername] = useState('')
   const [password, setPassword] = useState('')
   const [message, setMessage] = useState('')
@@ -15,6 +17,7 @@ function SecurityLogin() {
       })
       localStorage.setItem('security_id',res.data.security_id);
       console.log("Login Successful!")
+      navigate('/security/dashboard');
     }catch(error){
       console.log(error);
       setMessage(error.response?.data?.message || 'Login failed')

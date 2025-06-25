@@ -1,7 +1,10 @@
 import React,{useState} from 'react';
 import axios from 'axios'
+import { useNavigate } from 'react-router-dom'
+
 
 function AdminLogin() {
+  const navigate = useNavigate();
   const [username, setUsername] = useState('');
   const [password, setPassword] = useState('');
   const [message, setMessage] = useState('');
@@ -14,6 +17,7 @@ function AdminLogin() {
       })
       console.log("Front-end - Login Successful for admin")
       localStorage.setItem('admin_id',res.data.admin_id);
+      navigate('/admin/dashboard');
     }catch(err){
       setMessage(err.response?.data?.message)
     }
@@ -21,7 +25,7 @@ function AdminLogin() {
 
   return (
     <div className="bg-violet-400 shadow-xl rounded-2xl p-6 max-w-md mx-auto mt-10">
-      <h2 className="text-2xl font-bold text-center text-white mb-6">Admin Sign In</h2>
+      <h2 className="text-2xl font-bold text-center text-white mb-6">ADMIN SIGN IN</h2>
       <form className="max-w-sm mx-auto" onSubmit={handleSubmit}>
         <div className="mb-5">
           <label
@@ -36,7 +40,7 @@ function AdminLogin() {
             value = {username}
             onChange={(e)=>{setUsername(e.target.value)}}
             className="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
-            placeholder="name@flowbite.com"
+            placeholder="Enter your Username"
             required
           />
         </div>
@@ -50,6 +54,7 @@ function AdminLogin() {
           <input
             type="password"
             id="password"
+            placeholder="Enter your Username"
             value = {password}
             onChange={(e)=>setPassword(e.target.value)}
             className="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
