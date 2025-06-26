@@ -10,6 +10,7 @@ import {
   FaIdBadge,
 } from 'react-icons/fa'
 import { FaClipboardList } from "react-icons/fa6";
+import { IoLogOut } from "react-icons/io5";
 
 const navItems = [
   { to: '/admin/dashboard', label: 'Dashboard', icon: <FaHome /> },
@@ -17,6 +18,8 @@ const navItems = [
   { to: '/admin/usersearch', label: 'Security Log', icon: <FaClipboardList /> },
   { to: '/admin/visitorsearch', label: 'Visitor Report', icon: <FaFileAlt /> },
   { to: '/admin/profile', label: 'Profile', icon: <FaIdBadge /> },
+  {to:'/', label: 'Log out', icon: <IoLogOut />}
+  
 ]
 
 function AdminLayout() {

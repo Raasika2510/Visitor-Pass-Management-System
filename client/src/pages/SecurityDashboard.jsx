@@ -52,7 +52,7 @@ function SecurityDashboard() {
           </div>
         </div>
 
-        {/* Visitor List */}
+     
         <div className="mt-4 max-h-[400px] overflow-y-auto">
           <h2 className="text-xl font-semibold text-violet-800 mb-2">LIST OF VISITORS</h2>
           {visitors.map((v, index) => (
@@ -78,7 +78,7 @@ function SecurityDashboard() {
         </div>
       </div>
 
-      {/* Right Section - College Photo */}
+   
       <div className="w-full md:w-96 flex-shrink-0 h-full">
         <img
           src={image}

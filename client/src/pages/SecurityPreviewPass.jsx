@@ -91,7 +91,7 @@ const SecurityPreviewPass = () => {
                     onClick={() => navigate('/security/addvisitor')}
                     className="bg-gray-300 hover:bg-gray-400 text-gray-800 font-medium py-2 px-4 rounded"
                 >
-                    Edit
+                    Back
                 </button>
                 <button
                     onClick={handlePrint}

@@ -9,6 +9,7 @@ import {
   FaFileAlt,
   FaIdBadge,
 } from 'react-icons/fa'
+import { IoLogOut } from "react-icons/io5";
 
 const navItems = [
   { to: '/security/dashboard', label: 'Dashboard', icon: <FaHome /> },
@@ -16,6 +17,7 @@ const navItems = [
   { to: '/security/scanqr', label: 'Scan QR', icon: <FaQrcode /> },
   { to: '/security/visitorsearch', label: 'Visitor Report', icon: <FaFileAlt /> },
   { to: '/security/profile', label: 'Profile', icon: <FaIdBadge /> },
+  {to:'/', label: 'Log out', icon: <IoLogOut />}
 ]
 
 function SecurityLayout() {
