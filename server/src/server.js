@@ -3,9 +3,8 @@ console.log("🔥 server.js starting...");
 import express from "express";
 import { connectDB } from "./config/dbconnection.js";
 import securityLoginRoute from "./routes/securityLoginRoute.js";
-console.log("📁 securityLoginRoute.js loaded");
 import adminLoginRoute from "./routes/adminLoginRoute.js";
-console.log("📁 adminLoginRoute.js loaded");
+import securityAddVisitorRoute from "./routes/securityAddVisitorRoute.js"
 import cors from "cors";
 
 const app = express();
@@ -14,9 +13,9 @@ app.use(express.json());
 
 app.use("/api/security", securityLoginRoute);
 app.use("/api/admin", adminLoginRoute);
-console.log("✅ Routes registered");
+app.use("/api/securityaddvisitor",securityAddVisitorRoute);
 
 connectDB().then(() => {
   console.log("✅ DB Connected");
-  app.listen(5000, () => console.log("🚀 Server running at http://localhost:5000"));
+  app.listen(5000, () => console.log("Server running at http://localhost:5000"));
 });

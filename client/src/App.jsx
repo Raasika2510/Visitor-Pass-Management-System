@@ -16,6 +16,7 @@ import AdminAddUser from "./pages/AdminAddUser";
 import AdminUserSearch from "./pages/AdminUserSearch";
 import AdminVisitorSearch from "./pages/AdminVisitorSearch";
 import AdminProfile from "./pages/AdminProfile";
+import SecurityPreviewPass from "./pages/SecurityPreviewPass";
 
 function App() {
   return (
@@ -34,6 +35,7 @@ function App() {
         <Route path = "scanqr" element={<SecurityScanQR/>}/>
         <Route path = "visitorsearch" element={<SecurityVisitorSearch/>}/>
         <Route path = "profile" element={<SecurityProfile/>}/>
+        <Route path = "previewpass" element={<SecurityPreviewPass/>}/>
       </Route>
 
       <Route path="/admin" element={<AdminLayout/>}>

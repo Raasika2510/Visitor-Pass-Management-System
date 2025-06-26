@@ -114,6 +114,20 @@ function SecurityLayout() {
         <main className="flex-1 overflow-y-auto p-6 bg-gray-100">
           <Outlet />
         </main>
+
+        <footer className="bg-violet-800 text-center text-amber-50 p-4  shadow-md mt-auto">
+  <p className="text-sm font-light">
+    Developed with <span className="text-red-400">❤️</span> by{" "}
+    <a
+      href="https://github.com/Raasika2510"
+      target="_blank"
+      rel="noopener noreferrer"
+      className="underline hover:text-white transition-colors"
+    >
+      Raasika M
+    </a>
+  </p>
+</footer>
       </div>
     </div>
   )

@@ -29,13 +29,13 @@ function AdminLayout() {
 
   return (
     <div className="min-h-screen flex bg-gray-100">
-      {/* Sidebar */}
+   
       <aside
         className={`bg-violet-700 text-white p-4 space-y-4 shadow-lg transition-all duration-300 ${
           sidebarOpen ? 'w-64' : 'w-20'
         }`}
       >
-        {/* Collapse Button */}
+
         <button
           onClick={toggleSidebar}
           className="text-white text-xl mb-4 focus:outline-none"
@@ -44,7 +44,7 @@ function AdminLayout() {
           <FaBars />
         </button>
 
-        {/* Sidebar Title */}
+     
         {sidebarOpen && (
           <h2 className="text-xl font-bold mb-2">ADMIN PANEL</h2>
         )}
@@ -73,16 +73,16 @@ function AdminLayout() {
         </nav>
       </aside>
 
-      {/* Main content */}
+
       <div className="flex-1 flex flex-col">
-        {/* Header */}
+   
         <header className="bg-violet-800 text-amber-50 p-4 shadow-md flex justify-between items-center sticky top-0 z-50">
           <div>
             <h1 className="text-2xl font-bold">GURU NANAK COLLEGE (AUTONOMOUS)</h1>
             <p className="text-sm">Visitor Pass Management System – Admin Portal</p>
           </div>
 
-          {/* Profile Dropdown */}
+      
           <div className="relative">
             <button
               onClick={toggleDropdown}
@@ -111,7 +111,7 @@ function AdminLayout() {
           </div>
         </header>
 
-        {/* Page Content */}
+
         <main className="flex-1 overflow-y-auto p-6 bg-gray-100">
           <Outlet />
         </main>
