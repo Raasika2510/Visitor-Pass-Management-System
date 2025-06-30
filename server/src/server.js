@@ -7,6 +7,7 @@ import adminLoginRoute from "./routes/adminLoginRoute.js";
 import securityAddVisitorRoute from "./routes/securityAddVisitorRoute.js"
 import securityExitVisitorRoute from "./routes/securityExitVisitorRoute.js"
 import securityDashboardRoute from "./routes/securityDashboardRoute.js"
+import mainVisitorScanRoute from './routes/mainVisitorScanRoute.js'
 import cors from "cors";
 
 const app = express();
@@ -18,6 +19,7 @@ app.use("/api/admin", adminLoginRoute);
 app.use("/api/securityaddvisitor",securityAddVisitorRoute);
 app.use("/api/securityexitvisitor",securityExitVisitorRoute);
 app.use("/api/securitydashboard",securityDashboardRoute)
+app.use("/api/scanpage", mainVisitorScanRoute);
 
 connectDB().then(() => {
   console.log("✅ DB Connected");

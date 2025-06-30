@@ -26,7 +26,7 @@ export const getTodayVisitors = async (req, res) => {
       visitors
     });
   } catch (error) {
-    console.error("❌ Error in getTodayVisitors:", error);
+    console.error("Error in getTodayVisitors:", error);
     return res.status(500).json({ message: "Internal Server Error" });
   }
 };

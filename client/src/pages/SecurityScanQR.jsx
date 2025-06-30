@@ -1,71 +1,91 @@
-import React, { useState } from 'react'
-import { Scanner } from '@yudiel/react-qr-scanner'
-import axios from 'axios'
+import React, { useState } from 'react';
+import { Scanner } from '@yudiel/react-qr-scanner';
+import axios from 'axios';
 
-function SecurityScanQR() {
-  const [visitorId, setVisitorId] = useState('')
-  const [success, setSuccess] = useState(false)
-  const [scanning, setScanning] = useState(false)
+const SecurityScanQR = () => {
+  const [scannedId, setScannedId] = useState('');
+  const [success, setSuccess] = useState(false);
+  const [scanning, setScanning] = useState(false);
 
-  const handleScan = async (results) => {
-    if (!success && results.length) {
-      const id = results[0]?.rawValue
-      setVisitorId(id)
-      setSuccess(true)
-      setScanning(false)
+ const handleScan = async (results) => {
+  console.log("📸 Scanner result:", results);
 
-      try {
-        await axios.post('http://localhost:5000/api/securityexitvisitor/crud', {
-          visitor_id: id,
-          exitTime: new Date().toISOString(),
-        })
-      } catch (error) {
-        alert('Logout failed. Try again.')
-        console.error(error)
-      }
-    }
+  if (!results || !results.length || !results[0].rawValue) {
+    console.log("⚠️ Invalid or empty scan result");
+    return;
   }
 
-  const resetScanner = () => {
-    setVisitorId('')
-    setSuccess(false)
-    setScanning(true)
+  const visitorId = results[0].rawValue;
+
+  if (success) {
+    console.log("✅ Already marked success. Skipping further scans.");
+    return;
   }
+
+  console.log("📦 Sending visitor ID to backend:", visitorId);
+  setScannedId(visitorId);
+  setSuccess(true);
+  setScanning(false);
+
+  try {
+    const res = await axios.post('http://localhost:5000/api/securityexitvisitor/exit', {
+      visitor_id: visitorId,
+      exitTime: new Date().toISOString(),
+    });
+
+    console.log("🎉 Successfully updated visitor:", res.data);
+  } catch (err) {
+    console.error("❌ Logout failed:", err);
+    alert('Error logging out visitor.');
+  }
+};
+
+
+  const resetScan = () => {
+    console.log("🔄 Resetting scanner state");
+    setScannedId('');
+    setSuccess(false);
+    setScanning(true);
+  };
 
   return (
-    <div className="p-6 max-w-xl mx-auto text-center bg-white shadow-xl rounded-2xl">
-      <h2 className="text-3xl font-bold text-violet-800 mb-4">VISITOR PASS QR SCANNER</h2>
+    <div className="py-11 mt-10 text-center max-w-md mx-auto bg-white rounded-xl shadow-lg">
+      <h1 className="text-2xl font-bold text-violet-700 mb-4">Visitor QR Scanner for Exit</h1>
 
       {!scanning && !success && (
         <button
-          onClick={() => setScanning(true)}
-          className="bg-violet-700 hover:bg-violet-600 text-white px-6 py-3 rounded-lg text-lg font-semibold shadow"
+          onClick={() => {
+            console.log("📷 Scanning started");
+            setScanning(true);
+          }}
+          className="bg-violet-700 hover:bg-violet-600 text-white px-6 py-2 rounded-lg shadow"
         >
           Start Scanning
         </button>
       )}
 
       {scanning && (
-        <div className="mt-6 mx-auto w-72 h-72 border-4 border-violet-500 rounded-lg shadow-lg overflow-hidden">
-          <Scanner onResult={handleScan} />
+        <div className="mx-auto w-72 h-72 border-4 border-violet-500 mt-4 rounded-lg overflow-hidden">
+          <Scanner
+            onScan={handleScan}
+            onError={(err) => console.error("❗ Scanner error:", err)}
+          />
         </div>
       )}
 
       {success && (
-        <div className="mt-6 text-green-700 font-semibold text-lg">
-          ✅ Visitor <code className="bg-green-100 px-2 py-1 rounded">{visitorId}</code> marked as <strong>OUT OF CAMPUS</strong>
-          <div className="mt-4">
-            <button
-              onClick={resetScanner}
-              className="mt-2 bg-gray-300 hover:bg-gray-400 text-gray-800 px-4 py-2 rounded shadow"
-            >
-              Scan Another
-            </button>
-          </div>
+        <div className="mt-6 text-green-700 font-semibold ">
+          ✅ Visitor <code className="bg-green-100 px-2 py-1 rounded">{scannedId}</code> marked as <strong>OUT</strong>
+          <button
+            onClick={resetScan}
+            className="mt-4 bg-gray-200 hover:bg-gray-300 text-gray-800 px-4 py-2 rounded shadow"
+          >
+            Scan Another
+          </button>
         </div>
       )}
     </div>
-  )
-}
+  );
+};
 
-export default SecurityScanQR
+export default SecurityScanQR;

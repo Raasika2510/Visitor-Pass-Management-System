@@ -63,7 +63,9 @@ function SecurityDashboard() {
             >
               <div>
                 <p className="font-semibold">{v.name}</p>
-                <p className="text-sm text-gray-600">{v.department}</p>
+                <p className="text-sm text-gray-600">Visiting Dept: {v.department}</p>
+                <p className="text-sm text-gray-600">In-time: {v.
+entryTime}</p>
               </div>
               <span
                 className={`text-sm font-semibold px-3 py-1 rounded-full ${v.status === 'IN'

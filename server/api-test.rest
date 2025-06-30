@@ -15,3 +15,12 @@ Content-Type: application/json
   "username": "admin1",
   "password": "adminpass123"
 }
+
+### Test Scan Page for Main
+
+POST http://localhost:5000/api/scanpage/scan
+Content-Type: application/json
+
+{
+  "visitor_id" : "VST-1750933594485"
+}

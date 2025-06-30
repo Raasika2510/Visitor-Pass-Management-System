@@ -1,7 +1,7 @@
+import express from "express";
 import { exitVisitor } from "../controllers/securityExitVisitorController.js";
-import express from 'express';
 
-const router = express.Router()
-router.post('/crud',exitVisitor)
+const router = express.Router();
 
+router.post("/exit", exitVisitor); 
 export default router;

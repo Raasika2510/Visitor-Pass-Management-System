@@ -5,7 +5,7 @@ export const exitVisitor = async (req, res) => {
     const db = getDb();
     const { visitor_id, exitTime } = req.body;
 
-    if (!visitor_id || !exitTime) {
+    if (!visitor_id) {
       return res.status(400).json({ message: "Missing required fields." });
     }
 
