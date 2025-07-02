@@ -12,7 +12,7 @@ export async function SecurityLogin(req,res){
         //To update the last seen and status of the security guard
         await db.collection('security_credentials').updateOne(
             {_id: user._id},
-            {$set: {lastActive: new Date(), currentStatus:"active"}}
+            {$set: {lastActive: new Date(), currentStatus:"online"}}
         )
 
         //return the success message and id to the frontend
